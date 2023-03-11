@@ -42,8 +42,8 @@ def getMNISTdataset(batchSize=128, numWorkers=4):
     pathToDatasets = './datasets/'
 
     # Dataset objects
-    trainset = torchvision.datasets.MNIST(root=pathToDatasets, train=True, download=False, transform=normaliseData())
-    testset = torchvision.datasets.MNIST(root=pathToDatasets, train=False, download=False, transform=normaliseData())
+    trainset = torchvision.datasets.MNIST(root=pathToDatasets, train=True, download=True, transform=normaliseData())
+    testset = torchvision.datasets.MNIST(root=pathToDatasets, train=False, download=True, transform=normaliseData())
 
     # Dataset Loaders
     trainloader = data.DataLoader(trainset, batch_size=batchSize, shuffle=True, num_workers=numWorkers)
@@ -56,8 +56,8 @@ def getCIFAR10dataset(pathToDatasets = './datasets/', batchSize=128, valid_size=
 
     pathToData = pathToDatasets
 
-    train_dataset = torchvision.datasets.CIFAR10(root=pathToData, train=True, download=False, transform=cifar10Trans(doAugment=augment))
-    test_dataset = torchvision.datasets.CIFAR10(root=pathToData, train=False, download=False, transform=cifar10Trans())
+    train_dataset = torchvision.datasets.CIFAR10(root=pathToData, train=True, download=True, transform=cifar10Trans(doAugment=augment))
+    test_dataset = torchvision.datasets.CIFAR10(root=pathToData, train=False, download=True, transform=cifar10Trans())
 
     num_train = len(train_dataset)
     split = int(np.floor(valid_size * num_train))
